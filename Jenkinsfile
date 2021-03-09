@@ -34,7 +34,7 @@ pipeline {
                 sh 'scp kong-plugin-myplugin-0.1.0-1.all.rock kong@ip-192-168-7-18.us-west-2.compute.internal:/tmp/'
                 sh 'ssh kong@ip-192-168-7-18.us-west-2.compute.internal "rm -rf /tmp/kong-plugin-myplugin-0.1.0-1"'
                 sh 'ssh kong@ip-192-168-7-18.us-west-2.compute.internal "unzip /tmp/kong-plugin-myplugin-0.1.0-1.all.rock -d /tmp/kong-plugin-myplugin-0.1.0-1 && rm /tmp/kong-plugin-myplugin-0.1.0-1.all.rock"'
-                sh 'ssh kong@ip-192-168-7-18.us-west-2.compute.internal "rm -rf /usr/local/share/lua/5.1/kong/plugins/myplugin && cp -R /tmp/kong-plugin-myplugin-0.1.0-1/lua/kong/plugins/myplugin /usr/local/share/lua/5.1/kong/plugins/"'
+                sh 'ssh kong@ip-192-168-7-18.us-west-2.compute.internal "rm -rf /usr/local/share/lua/5.1/kong/plugins/myplugin && cp -R /tmp/kong-plugin-myplugin-0.1.0-1/lua/kong/plugins/myplugin /usr/local/share/lua/5.1/kong/plugins/ && kong reload"'
             }
         }
     }
