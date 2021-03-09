@@ -4,7 +4,7 @@ agent {
     label 'kong-plugin'
 }
     environment {
-        LUA_PATH=/kong/?.lua;/kong/?/init.lua;${WORKSPACE}/?.lua;${WORKSPACE}/?/init.lua;;
+        LUA_PATH="/kong/?.lua;/kong/?/init.lua;${WORKSPACE}/?.lua;${WORKSPACE}/?/init.lua;;"
     }
     stages{
     stage('Preparation') { // for display purposes
