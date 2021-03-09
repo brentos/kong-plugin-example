@@ -31,6 +31,8 @@ pipeline {
         stage('Results') {
             steps {
                 archiveArtifacts '*.rock'
+                sh 'scp kong-plugin-myplugin-0.1.0-1.all.rock kong@ec2-34-217-208-29.us-west-2.compute.amazonaws.com:/tmp/'
+                sh 'ssh kong@ec2-34-217-208-29.us-west-2.compute.amazonaws.com "luarocks install kong-plugin-myplugin-0.1.0-1.all.rock && rm /tmp/kong-plugin-myplugin-0.1.0-1.all.rock"'
             }
         }
     }
