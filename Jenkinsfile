@@ -3,7 +3,9 @@ pipeline {
 agent {
     label 'kong-plugin'
 }
-
+    environment {
+        LUA_PATH=/kong/?.lua;/kong/?/init.lua;${WORKSPACE}/?.lua;${WORKSPACE}/?/init.lua;;
+    }
     stages{
     stage('Preparation') { // for display purposes
     steps {
@@ -16,7 +18,6 @@ agent {
         steps{
         // Run the maven build
         sh 'luacheck .'
-        sh 'whoami'
 
         sh 'cd /kong && bin/busted $WORKSPACE/spec'
         sh 'luarocks make --pack-binary-rock'
